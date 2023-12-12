@@ -1,0 +1,29 @@
+body {
+    font-family: sans-serif;
+}
+
+.wrapper {
+    width: 600px;
+}
+
+.single-tour {
+    height: 800px;
+}
+
+img {
+    width: 600px;
+    height: 500px;
+}
+
+.more-btn {
+    background: transparent;
+    border: none;
+    color: blue;
+}
+
+.delete-btn {
+    color: red;
+    background: transparent;
+    border: 1px solid red;
+    padding: 10px 20px;
+}
