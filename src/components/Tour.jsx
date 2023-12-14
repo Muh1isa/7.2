@@ -1,29 +1,29 @@
 import { useState } from "react"
-import { useGlobalContext } from "../context"
+import { useDispatch, useSelector } from "react-redux"
+import { decrement, increment } from "../features/cartslice"
+// import { useGlobalContext } from "../context"
 
 
-export default function Tour({ id, image, name, info, price }) {
+export default function Tour({ img, title, amount, price }) {
 
-    const { removeTour } = useGlobalContext()
-    const [readMore, setReadMore] = useState(false)
+    const dispatch = useDispatch()
+    // const { amount } = useSelector((state) => state.cart)
 
     return (
-        <div className="wrapper">
-            <div className="single-tour">
-                <img src={image} alt={name} />
-                <div>
-                    <div className="tour-info">
-                        <h2>{name}</h2>
-                        <h3 className="tour-price">${price}</h3>
+
+        <div className="single-tour" >
+            {/* <h2>hello</h2> */}
+            <img src={img} alt={title} />
+            <div>
+                <div className="tour-info">
+                    <h2>{title}</h2>
+                    <h3 className="tour-price">${price}</h3>
+                    <div className="amount">
+                        <button onClick={() => dispatch(decrement())}>Dec</button>
+                        <h3>{amount}</h3>
+                        <button onClick={() => dispatch(increment())}>Inc</button>
                     </div>
-                    <p>
-                        {readMore ? info : `${info.substring(0, 200)}...`}
-                        <button onClick={() => setReadMore(!readMore)} className="more-btn">
-                            {readMore ? 'show less' : 'read more'}
-                        </button>
-                    </p>
-                    <button className="delete-btn" onClick={() => removeTour(id)}>not interested</button>
-                </div>
+                </div >
             </div>
         </div>
     )
