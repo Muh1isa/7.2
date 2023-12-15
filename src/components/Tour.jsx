@@ -1,10 +1,10 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { decrement, increment } from "../features/cartslice"
+import { decrement, increment, removeitem } from "../features/cartslice"
 // import { useGlobalContext } from "../context"
 
 
-export default function Tour({ img, title, amount, price }) {
+export default function Tour({ id, img, title, amount, price }) {
 
     const dispatch = useDispatch()
     // const { amount } = useSelector((state) => state.cart)
@@ -19,10 +19,13 @@ export default function Tour({ img, title, amount, price }) {
                     <h2>{title}</h2>
                     <h3 className="tour-price">${price}</h3>
                     <div className="amount">
-                        <button onClick={() => dispatch(decrement())}>Dec</button>
+                        {amount < 1 ? <button className="clearcard" onClick={() => dispatch(removeitem(id))}>Dec</button> 
+                        : <button onClick={() => dispatch(decrement({id}))}>Dec</button>}
                         <h3>{amount}</h3>
-                        <button onClick={() => dispatch(increment())}>Inc</button>
+                        <button onClick={() => dispatch(increment({id}))}>Inc</button>
+
                     </div>
+                    <button className="clearcard" onClick={() => dispatch(removeitem(id))}>Remove</button>
                 </div >
             </div>
         </div>
