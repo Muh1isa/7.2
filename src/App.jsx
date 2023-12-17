@@ -10,14 +10,14 @@ import { calctotal } from './features/cartslice'
 
 function App() {
 
-  const {amount, cart} = useSelector((state) => state.cart) 
+  const {amount, items} = useSelector((state) => state.cart) 
   
   const dispatch = useDispatch()
 
 
   useEffect(() => {
     dispatch(calctotal())
-  }, [cart])
+  }, [items, amount])
 
   return (
     <>

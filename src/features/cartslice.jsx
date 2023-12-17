@@ -36,7 +36,8 @@ const cartSlice = createSlice({
                 amount += item.amount;
                 total += item.amount * item.price
             })
-
+            state.amount = amount;
+            state.total = total
         }
     }
 })
